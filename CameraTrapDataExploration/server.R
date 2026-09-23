@@ -75,8 +75,11 @@ server <- function(input, output, session) {
         incProgress(0.1, detail = "Processing Wildlife Insights format...")
         
         dfs[["deployments.csv"]]$project_id <- dfs[["projects.csv"]]$project_name[1] 
-        dfs[["images.csv"]]$sp <- paste0(dfs[["images.csv"]]$genus, ".", dfs[["images.csv"]]$species)
+        dfs[["images.csv"]]$sp <- str_replace_all(paste(dfs[["images.csv"]]$genus, dfs[["images.csv"]]$species),"\\s+", ".")
         dfs[["images.csv"]]$timestamp <- ymd_hms(dfs[["images.csv"]]$timestamp)
+        dfs[["images.csv"]] <- dfs[["images.csv"]] |>
+          mutate(is_blank = coalesce(as.integer(is_blank),
+                                     as.integer(common_name %in% c("Blank"))))
         
         dfs[["deployments.csv"]]$start_date <- ymd(dfs[["deployments.csv"]]$start_date)
         dfs[["deployments.csv"]]$end_date <- ymd(dfs[["deployments.csv"]]$end_date)
