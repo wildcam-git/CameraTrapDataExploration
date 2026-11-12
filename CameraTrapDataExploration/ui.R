@@ -51,9 +51,9 @@ ui_welcome <- fluidRow(
       tags$li(HTML("A set of .csv files with the same names and formats as from those platforms. We have provided templates in <a href='https://drive.google.com/drive/folders/1ulLVZoxfunWIOrmNjXArtQmRaJVWpfD6?usp=sharing' target='_blank'>this folder</a>. It is essential the files names and at least the column headings shown are replicated (others can be present)."))
     ),
     p(),
-    HTML("If you do not have any existing data but want to try the app, download an example dataset in Wildlife Insights format here: <a href='https://drive.google.com/file/d/1UQfGsWe4XWh3WOhL0mKsx0_i3wRMs8bC/view?usp=drive_link' target='_blank'> Wildlife Insights Example</a>."),
+    HTML("If you do not have any existing data but want to try the app, download an example dataset in Wildlife Insights format here: <a href='https://drive.google.com/file/d/1Ry-2sqWLkC0jEalRDPFsMRcHgyRs9WW6/view?usp=drive_link' target='_blank'> Wildlife Insights Example</a>. Note - some errors have been introduced into this dataset to highlight how issues may be detected."),
     p(),
-    HTML("For feedback and feature requests, please post an issue at the <a href='https://github.com/mabecker89/CameraTrapDataExploration/issues' target='_blank'>projects github page</a>."),
+    HTML("For feedback and feature requests, please post an issue at the <a href='https://github.com/wildcam-git/CameraTrapDataExploration/issues' target='_blank'>projects github page</a>."),
     p(),
     
     # Acknowledgments section with custom styling

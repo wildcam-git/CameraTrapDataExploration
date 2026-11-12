@@ -77,6 +77,11 @@ server <- function(input, output, session) {
         dfs[["deployments.csv"]]$project_id <- dfs[["projects.csv"]]$project_name[1] 
         dfs[["images.csv"]]$sp <- str_replace_all(paste(dfs[["images.csv"]]$genus, dfs[["images.csv"]]$species),"\\s+", ".")
         dfs[["images.csv"]]$timestamp <- ymd_hms(dfs[["images.csv"]]$timestamp)
+        
+        # If the blank column isnt present (already excluded on export - add it back to avoid errors)
+        if (!"is_blank" %in% names(dfs[["images.csv"]])) {
+          dfs[["images.csv"]]$is_blank <- NA_integer_
+        }
         dfs[["images.csv"]] <- dfs[["images.csv"]] |>
           mutate(is_blank = coalesce(as.integer(is_blank),
                                      as.integer(common_name %in% c("Blank"))))
